@@ -28,11 +28,16 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.scss"
             ],
             "scripts": []
           },
           "configurations": {
+            "es5" : {
+              "tsConfig": "tsconfig.app.es5.json"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -72,6 +77,9 @@
           "configurations": {
             "production": {
               "browserTarget": "AncestryTest:build:production"
+            },
+            "es5" : {
+              "browserTarget": "AncestryTest:build:es5"
             }
           }
         },
@@ -93,6 +101,8 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -124,6 +134,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "AncestryTest"
 }

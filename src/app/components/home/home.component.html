@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-body">
+                <article>
+                    <h2>World conflicts. Personal stories.</h2>
+                    <p>Throughout history, millions of courageous men and women have served and protected their country
+                        in times of conflict. Were your ancestors among them? It’s never been easier to find out on
+                        Ancestry.com, the world’s largest online collection of family history resources, including
+                        millions of military records spanning from before the Revolutionary War all the way up to
+                        Vietnam.</p>
+                    <img src="/assets/images/content_pic.png" alt="World conflicts. Personal stories.">
+                    <p>Search through enlightening historical documents from every major U.S. war from the American
+                        Revolution through Vietnam, including draft registration cards, veterans’ gravesites, soldier
+                        pension indexes, enlistment records, muster rolls and much more.</p>
+                    <button class="button bg-lime bevel">Search all military records</button>
+                </article>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 related-content">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3>Featured Collections</h3>
+                <ul>
+                    <li>
+                        <a href="#">U.S. World War II Army Enlistment Records</a>
+                    </li>
+                    <li>
+                        <a href="#">U.S. Civil War Soldiers, 1861–1865</a>
+                    </li>
+                    <li>
+                        <a href="#">WWII U.S. Navy Muster Rolls, 1938–1949</a>
+                    </li>
+                    <li>
+                        <a href="#">U.S. World War II Draft Registration Cards, 1942</a>
+                    </li>
+                    <li>
+                        <a href="#">World War I Draft Registration Cards</a>
+                    </li>
+                    <li>
+                        <a href="#">U.S. Marine Corp Muster Rolls, 1798–1958</a>
+                    </li>
+                </ul>
+                <button class="button bg-dark-grey">See all collections</button>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3>Let us help you discover your story</h3>
+                <p>Begin your free family tree with a few simple facts. We’ll help you discover a lot more. Start your
+                    tree by subscribing today for a free trial.</p>
+                <button class="button bg-dark-grey" (click)="openModal(template)">Subscribe today</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Subscribe Today</h4>
+        <button type="button" class="close-modal pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label>Your first name</label>
+                    <input type="text" formControlName="firstName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label>Your last name</label>
+                    <input type="text" formControlName="lastName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Your email</label>
+                <input type="text" formControlName="email" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div>
+            </div>
+            <div>
+                <button class="button bg-lime bevel">Get started</button>
+            </div>
+            <div class="terms">
+                By creating an account, you agree to <a href="#">Ancestry Terms and Conditions</a> and understand that
+                your information will be used in accordance with our <a href="#">Privacy Statement</a> including that we
+                will send you emails about our service and special offers.
+            </div>
+        </form>
+    </div>
+</ng-template>
