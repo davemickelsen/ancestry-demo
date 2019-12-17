@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-md-8">
-        <div class="card mb-4">
+    <div class="grid-col-1">
+        <div class="card">
             <div class="card-body">
                 <article>
                     <h2>World conflicts. Personal stories.</h2>
@@ -18,9 +18,9 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 related-content">
-        <div class="card mb-4">
-            <div class="card-body">
+    <div class="grid-col-2 related-content">
+        <div class="card">
+            <div class="card-body-sm">
                 <h3>Featured Collections</h3>
                 <ul>
                     <li>
@@ -42,59 +42,65 @@
                         <a href="#">U.S. Marine Corp Muster Rolls, 1798–1958</a>
                     </li>
                 </ul>
-                <button class="button bg-dark-grey">See all collections</button>
+                <button class="button-sm bg-dark-grey">See all collections</button>
             </div>
         </div>
 
-        <div class="card mb-4">
-            <div class="card-body">
+        <div class="card bg-light-grey">
+            <div class="card-body-sm">
                 <h3>Let us help you discover your story</h3>
                 <p>Begin your free family tree with a few simple facts. We’ll help you discover a lot more. Start your
                     tree by subscribing today for a free trial.</p>
-                <button class="button bg-dark-grey" (click)="openModal(template)">Subscribe today</button>
+                <button class="button-sm bg-dark-grey" (click)="toggleModal()">Subscribe today</button>
             </div>
         </div>
     </div>
 </div>
 
-<ng-template #template>
+<div class="modal-bg" [class.show]="modalVisible" [class.hide]="!modalVisible" (click)="toggleModal()"></div>
+<div class="modal-container" [class.show]="modalVisible" [class.hide]="!modalVisible">
     <div class="modal-header">
         <h4 class="modal-title pull-left">Subscribe Today</h4>
-        <button type="button" class="close-modal pull-right" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
+        <button type="button" class="close-modal pull-right" aria-label="Close" (click)="toggleModal()">
+            <span>&times;</span>
         </button>
     </div>
     <div class="modal-body">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-row">
                 <div class="form-group col-6">
-                    <label>Your first name</label>
+                    <label [class.error]="submitted && f.firstName.errors">Your first name</label>
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required">
+                            <i class="fas fa-exclamation-triangle"></i> Required
+                        </div>
+                    </div>
                     <input type="text" formControlName="firstName" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
-                    </div>
                 </div>
                 <div class="form-group col-6">
-                    <label>Your last name</label>
+                    <label [class.error]="submitted && f.lastName.errors">Your last name</label>
+                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastName.errors.required">
+                            <i class="fas fa-exclamation-triangle"></i> Required
+                        </div>
+                    </div>
                     <input type="text" formControlName="lastName" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-                    </div>
                 </div>
             </div>
             <div class="form-group">
-                <label>Your email</label>
-                <input type="text" formControlName="email" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <label [class.error]="submitted && f.email.errors">Your email</label>
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                    <div *ngIf="f.email.errors.required">Email is required</div>
-                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    <div *ngIf="f.email.errors.required || f.email.errors.email">
+                        <i class="fas fa-exclamation-triangle"></i> A valid email is required
+                    </div>
                 </div>
+                <input type="email" formControlName="email" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
             </div>
             <div>
-                <button class="button bg-lime bevel">Get started</button>
+                <button class="button-sm green-gradient bevel">Get started</button>
             </div>
             <div class="terms">
                 By creating an account, you agree to <a href="#">Ancestry Terms and Conditions</a> and understand that
@@ -103,4 +109,4 @@
             </div>
         </form>
     </div>
-</ng-template>
+</div>

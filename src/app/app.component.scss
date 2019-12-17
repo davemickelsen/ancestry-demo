@@ -3,3 +3,13 @@
 main {
     background-color: $main-bg-color;
 }
+section {
+    -webkit-flex: 1;
+    flex: 1 1 auto;
+    position: relative;
+    min-width: 1px;
+    max-width: 75rem;
+    margin: 0 auto;
+    z-index: 1;
+    width: 100%;
+}

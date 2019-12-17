@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600');
 @import "variables.scss";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 body, html {
     height: 100%;
@@ -12,23 +13,33 @@ body {
     color: #36322d;
 }
 
-// html { font-size: 62.5%; } 
-// body { font-size: 1.4rem; } /* =14px */
-h1   { font-size: 2.4rem; } /* =24px */
+h1 { 
+    font-size: 2.4rem; 
+}
 
 a {
     text-decoration: none;
     color: $link-text-color;
+    font-weight: 600;
+}
+
+.container-fluid {
+    padding: 1.25rem;
 }
 
 .card {
     background-color: #fff;
     border-radius: 1rem;
-    // border: 1px solid #e8e8e4;
-    -webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.05);
-    -moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.05);
-    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.05);
+    -webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.1);
+    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.1);
     text-align: left;
+    border: 0;
+    margin-bottom: 1.25rem;
+}
+
+.card-body-sm {
+    padding: 0.8rem;
 }
 
 .button {
@@ -37,8 +48,15 @@ a {
     border-radius: 0.2rem;
     text-shadow: 0px 0px 4px rgba(0,0,0,0.4);
     border: 0;
-    padding: 0.5rem 0.7rem;
+    padding: 0.5rem 0.9rem;
     cursor: pointer;
+    margin-bottom: 0.2rem;
+}
+
+.button-sm {
+    @extend .button;
+    padding: 0.25rem 0.7rem;
+    margin-bottom: 0.25rem;
 }
 
 .bevel {
@@ -54,4 +72,153 @@ a {
 .bg-dark-grey {
     background-color: $dark-grey;
 }
+.bg-light-grey {
+    background-color: $card-light-grey-bg;
+}
 
+.bg-green {
+    background-color: $green;
+}
+
+.green-gradient {
+    background: $green;
+    background: linear-gradient(180deg, $green 0%, $green-dark 100%);
+}
+
+//Grid
+
+.grid-container-fluid {
+    width: 100%;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.grid-row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -0.625rem;
+    margin-left: -0.625rem;
+}
+
+.grid-col-1, .grid-col-2 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+}
+
+.show {
+    display: block;
+}
+.hide {
+    display: none;
+}
+
+.form-control {
+    padding: .2rem .5rem;
+}
+.form-group {
+    label {
+        margin-bottom: 0;
+        font-weight: 600;
+    }
+}
+
+//Modal
+.close-modal {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background-color: darkgrey;
+    border: 1px solid #fff;
+    cursor: pointer;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 800;
+    text-align: center;
+    span {
+        display: block;
+        position: absolute;
+        top: -6px;
+        left: 6px;
+    }
+}
+
+.modal-header {
+    padding: .5rem 1rem;
+    border-bottom: 0;
+    h4 {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+}
+.modal-body {
+    background-color: #f9f7f3;
+    border-bottom-left-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+}
+
+.modal-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    background-color: #fff;
+    border-radius: 0.3rem;
+    text-align: left;
+    max-width: 30rem;
+    min-width: 26rem;
+    -webkit-box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.38); 
+    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.38);
+}
+
+.modal-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    overflow: hidden;
+    background-color: #000;
+    opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+    .grid-col-1 {
+        -ms-flex: 0 0 66.666667%;
+        flex: 0 0 66.666667%;
+        max-width: 48.5rem;
+    }
+    .grid-col-2 {
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 25rem;
+    }
+}
+
+.error {
+    color: $error-red;
+}
+
+.invalid-feedback {
+    display: inline-block;
+    font-size: 1rem;
+    color: $error-red;
+    width: auto;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    margin-top: 0;
+    i {
+        font-size: 0.8rem;
+    }
+}
