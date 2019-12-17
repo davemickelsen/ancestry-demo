@@ -222,3 +222,16 @@ a {
         font-size: 0.8rem;
     }
 }
+
+.arrow::after {
+    content: '';
+    transform: rotate(45deg);
+    border-right: 2px solid #fff;
+    border-top: 2px solid #fff;
+    display: inline-block;
+    position: relative;
+    top: -2px;
+    width: 7px;
+    height: 7px;
+    margin-left: 0.6rem;
+}

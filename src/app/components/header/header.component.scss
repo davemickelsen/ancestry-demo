@@ -32,25 +32,14 @@ header {
                 list-style: none;
                 margin-right: 0.6rem;
             }
-            li.arrow::after {
-                content: '';
-                transform: rotate(45deg);
-                border-right: 2px solid #fff;
-                border-top: 2px solid #fff;
-                display: inline-block;
-                width: 7px;
-                height: 7px;
-                margin-left: 0.6rem;
-                margin-top: -1px;
-            }
         }
     }
     h1 {
         color: #fff;
         font-family: 'Source Sans Pro', sans-serif;
         font-weight: 300;
-        font-size: 3.1em;
-        letter-spacing: 0.02em;
+        font-size: 3rem;
+        letter-spacing: 0.1rem;
         text-shadow: 0px 0px 4px rgba(0,0,0,0.4);
         margin-top: 1.2rem;
     }
@@ -60,8 +49,18 @@ header {
     header {
         max-height: 8rem;
         h1 {
-            font-size: 2.4em;
-            letter-spacing: 0.02em;
+            font-size: 2.5rem;
+            text-shadow: 0px 0px 4px rgba(0,0,0,0.4);
+            margin-top: 1.2rem;
+        }
+    }
+}
+
+@media (max-width: 390px) {
+    header {
+        max-height: 8rem;
+        h1 {
+            font-size: 2rem;
             text-shadow: 0px 0px 4px rgba(0,0,0,0.4);
             margin-top: 1.2rem;
         }
