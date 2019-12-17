@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "startES5": "ng serve --configuration=es5",
     "build": "ng build",
     "buildES5": "ng build --configuration=es5",
